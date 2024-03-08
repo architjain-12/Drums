@@ -1,5 +1,5 @@
 let buttonList = document.querySelectorAll("button");
-console.log(buttonList);
+// console.log(buttonList);
 let soundsPath = '/sounds/';
 let soundsName = {'w' : 'crash.mp3', 
                     'a' : 'kick-bass.mp3', 
@@ -9,9 +9,12 @@ let soundsName = {'w' : 'crash.mp3',
                     'k' : 'tom-3.mp3', 
                     'l' : 'tom-4.mp3'}
 for(i=0; i<buttonList.length; i++) {
-    document.querySelectorAll(".drum")[i].addEventListener('click', function () {
-        let selectedDrum = this.innerHTML;
-        let audio = new Audio(soundsPath+soundsName[selectedDrum]);
-        audio.play();
+    document.querySelectorAll(".drum")[i].addEventListener("keypress", function (e) {
+        console.log(e.key);
+        let selectedDrum = e.key;
+        if(Object.keys(soundsName).includes(e.key)) {
+            let audio = new Audio(soundsPath+soundsName[selectedDrum]);
+            audio.play();
+        }
     });
 }
