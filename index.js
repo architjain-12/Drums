@@ -1,18 +1,17 @@
 let buttonList = document.querySelectorAll("button");
+console.log(buttonList);
 let soundsPath = '/sounds/';
-let soundsName = ['crash.mp3', 'kick-bass.mp3', 'snare.mp3', 'tom-1.mp3', 'tom-2.mp3', 'tom-3.mp3', 'tom-4.mp3']
+let soundsName = {'w' : 'crash.mp3', 
+                    'a' : 'kick-bass.mp3', 
+                    's' : 'snare.mp3', 
+                    'd' : 'tom-1.mp3', 
+                    'j' : 'tom-2.mp3', 
+                    'k' : 'tom-3.mp3', 
+                    'l' : 'tom-4.mp3'}
 for(i=0; i<buttonList.length; i++) {
     document.querySelectorAll(".drum")[i].addEventListener('click', function () {
-        console.log('Click');
-        let randomSoundName = soundsName[Math.floor((Math.random()*7)+1)];
-        let audio = new Audio(soundsPath+randomSoundName);
+        let selectedDrum = this.innerHTML;
+        let audio = new Audio(soundsPath+soundsName[selectedDrum]);
         audio.play();
     });
 }
-// console.log(buttonList);
-// buttonList.forEach((x) => {
-//     console.log(x);
-//     x.addEventListener('Click', function () {
-//         console.log('Click');
-//     });
-// })
